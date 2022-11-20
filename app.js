@@ -7,12 +7,10 @@ const Tareas = require('./models/tareas');
 
 
 const main = async() =>{
-    console.log('hola mundo');
-
+    
     let opt = '';
 
     const tareas = new Tareas();
-    
 
     do {
         
@@ -25,7 +23,7 @@ const main = async() =>{
                 tareas.crearTarea( desc );
             break;
             case '2':
-                console.log(tareas._lista)
+                console.log(tareas.listadoArr)
                 break;
         }
 

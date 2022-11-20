@@ -5,6 +5,20 @@ class Tareas {
 
     _lista = {};
 
+    get listadoArr() {
+
+        const listado = [];
+
+        Object.keys( this._lista ).forEach( key =>{
+            const tarea = this._lista[key];
+
+            listado.push(tarea)
+
+        });
+
+        return listado;
+    }
+
     constructor() {
         this._lista = {};
     }
