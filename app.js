@@ -1,5 +1,6 @@
 require('colors');
 
+const { dataBase } = require('./helpers/guardarArchivo');
 const { inquirerMenu, pausa, leerInput } = require('./helpers/inquirer');
 const Tareas = require('./models/tareas');
 
@@ -27,6 +28,7 @@ const main = async() =>{
                 break;
         }
 
+        //dataBase( tareas.listadoArr )
 
         await pausa();
 
