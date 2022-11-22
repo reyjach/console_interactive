@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const { default: Choices } = require('inquirer/lib/objects/choices');
 
 require('colors');
 
@@ -84,8 +85,36 @@ const leerInput = async( message ) => {
     return desc
 }
 
+const tareasBorrar = async( tareas = [] ) => {
+
+    const choices = tareas.map( (tarea, i) => {
+
+        const idx = `${i + 1 }. ${ tarea.desc }`.green;
+
+        return {
+            value:tarea.id,
+            name: `${ idx }`
+        }
+    })
+
+    const preguntas = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'Borrar',
+            choices
+        }
+    ]
+
+    const { id } = await inquirer.prompt(preguntas);
+
+    return id;
+
+}
+
 module.exports = {
     inquirerMenu,
     pausa,
-    leerInput
+    leerInput,
+    tareasBorrar
 }
