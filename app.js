@@ -32,7 +32,14 @@ const main = async() =>{
             break;
             case '2':
                 tareas.listarTare();
-                break;
+            break;
+            case '3':
+                tareas.listarPendientesCompletadas( true );
+            break
+
+            case '4':
+                tareas.listarPendientesCompletadas( false );
+            break
         }
 
         dataBase( tareas.listadoArr );
