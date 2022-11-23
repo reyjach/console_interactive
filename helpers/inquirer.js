@@ -89,7 +89,7 @@ const tareasBorrar = async( tareas = [] ) => {
 
     const choices = tareas.map( (tarea, i) => {
 
-        const idx = `${i + 1 }. ${ tarea.desc }`.green;
+        const idx = `${i + 1 }. ${ tarea.desc }`;
 
         return {
             value:tarea.id,
@@ -97,6 +97,10 @@ const tareasBorrar = async( tareas = [] ) => {
         }
     })
 
+    choices.unshift({
+        value: '0',
+        name: '0.'.green + ' Cancelar'
+    })
     const preguntas = [
         {
             type: 'list',
@@ -112,9 +116,25 @@ const tareasBorrar = async( tareas = [] ) => {
 
 }
 
+const confirmar = async( message = '') => {
+
+    const pregunta = [
+        {
+            type: 'confirm',
+            name: 'ok',
+            message
+        }
+    ]
+
+    const { ok } = await inquirer.prompt(pregunta);
+
+    return ok;
+}
+
 module.exports = {
     inquirerMenu,
     pausa,
     leerInput,
-    tareasBorrar
+    tareasBorrar,
+    confirmar
 }
